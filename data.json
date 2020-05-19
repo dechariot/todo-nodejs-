@@ -1,10 +1,11 @@
-[{  
-    "id": 1,
-    "todo":"set up our database",
-    "complete":false
-    },
-    {
-    "id": 2,
-    "todo":"create a package.json",
-    "complete":true
-   }]
+[
+  { "id": 1, "content": "go to work", "status": "complete" },
+  { "id": 2, "content": "go to coffee with friends", "status": "incomplete" },
+  { "id": 4, "content": "go to sleep at 11pm", "status": "incomplete" },
+  {
+    "id": 5,
+    "content": "complete assignment 1 in week 7",
+    "status": "incomplete"
+  },
+  { "id": 6, "content": "go to lib", "status": "incomplete" }
+]
