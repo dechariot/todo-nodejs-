@@ -85,16 +85,40 @@ const removeToDo = () => {
 };
 
 const renameToDo = () => {
+  //Load all To Do
   const currentData = loadData();
-
+  //Find the id of the item user want to rename
   let indexRename = currentData.find(({ id }) => id == process.argv[3]);
   indexRename.content = process.argv[4];
-
   //Update
   fs.writeFileSync(`data.json`, JSON.stringify(currentData));
   console.log(
     `The item is renamed! \nYou can type "list" or "show list" to see your to-do list.`
   );
+};
+
+const toggleTodo = () => {
+  //Load all To Do
+  const currentData = loadData();
+  //Find the item user want to mark complete
+  let indexToggle = currentData.find(({ id }) => id == process.argv[3]);
+
+  //User can type "complete" or  "incomplete" to change the status of items
+  if (
+    process.argv[4] === "complete" ||
+    process.argv[4] === "completed" ||
+    process.argv[4] === "finish"
+  ) {
+    indexToggle.status = "completed";
+    console.log("Your item is marked complete.");
+  }
+  if (process.argv[4] === "uncompleted" || process.argv[4] === "incomplete") {
+    indexToggle.status = "incomplete";
+    console.log("Your item is marked incomplete");
+  }
+  //Update
+  fs.writeFileSync(`data.json`, JSON.stringify(currentData));
+  console.log(`You can type "list" or "show list" to see your to-do list.`);
 };
 
 //Read and setup for commands
@@ -113,9 +137,11 @@ if (process.argv[2] === "add") {
   }
 } else if (process.argv[2] === "rename") {
   renameToDo();
+} else if (process.argv[2] === "toggle") {
+  toggleTodo();
 } else if (process.argv[2] == null) {
   console.log(
-    `Welcome to To-Do App! Let's organize your works! \nHow to use: \nType "add" to add your to do items.\nType "delete" to delete your to do items. \nType "rename" + id + "new name" to change name of the item.\nType "show list" or "list" to show your all to do.`
+    `Welcome to To-Do App! Let's organize your works! \nHow to use: \nType "add" to add your to do items.\nType "delete" to delete your to do items. \nType "rename" + id + "new name" to change name of the item.\nIf you want to change the status of items:\n-You type "toggle" + id + "complete" to mark your items complete. \n-You type "toggle" + id + "incomplete"  to mark your items incomplete.\nType "show list" or "list" to show your all to do.`
   );
 } else {
   console.log(
