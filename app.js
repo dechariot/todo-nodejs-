@@ -52,7 +52,8 @@ const addTodo = (newTodo) => {
       status: "incomplete",
     };
     saveData(newTodo);
-    console.log(newTodo);
+    console.log("========NOTICE=========");
+    console.log(`You just add "`, newTodo.content, `" to your list.`);
   }
   console.log(
     `Your to do list updated! \nYou can type "list" or "show list" to see your to-do list.`
@@ -78,7 +79,7 @@ const removeToDo = () => {
     fs.writeFileSync(`data.json`, JSON.stringify(currentData));
   }
   console.log(
-    `Your to do list updated! \nYou can type "list" or "show list" to see your to-do list.`
+    `The item is deleted! \nYou can type "list" or "show list" to see your to-do list.`
   );
 };
 
