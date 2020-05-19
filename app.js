@@ -65,8 +65,9 @@ const removeToDo = () => {
   const currentData = loadData();
 
   //Remove Item follow as ID of to-do item
+  //Find the ID of Items want to delete
   let indexDelete = currentData.find(({ id }) => id == process.argv[3]);
-
+  //Delete item object followed as ID
   currentData.splice(indexDelete.id - 1, 1);
 
   let newId = 1;
@@ -83,12 +84,25 @@ const removeToDo = () => {
   );
 };
 
+const renameToDo = () => {
+  const currentData = loadData();
+
+  let indexRename = currentData.find(({ id }) => id == process.argv[3]);
+  indexRename.content = process.argv[4];
+
+  //Update
+  fs.writeFileSync(`data.json`, JSON.stringify(currentData));
+  console.log(
+    `The item is renamed! \nYou can type "list" or "show list" to see your to-do list.`
+  );
+};
+
 //Read and setup for commands
 if (process.argv[2] === "add") {
   //Add items into data.json
   //Notice you that your data updated
   addTodo();
-} else if (process.argv[2] === "delete") {
+} else if (process.argv[2] === "delete" || process.argv[2] === "remove") {
   removeToDo();
 } else if (process.argv[2] === "show list" || process.argv[2] === "list") {
   const allItems = loadData();
@@ -97,9 +111,11 @@ if (process.argv[2] === "add") {
   for (const { id, content, status } of allItems) {
     console.log(id, content, status);
   }
+} else if (process.argv[2] === "rename") {
+  renameToDo();
 } else if (process.argv[2] == null) {
   console.log(
-    `Welcome to To-Do App! Let's organize your works! \nHow to use: \nType "add" to add your to do items.\nType "delete" to delete your to do items.\nType "show list" or "list" to show your all to do.`
+    `Welcome to To-Do App! Let's organize your works! \nHow to use: \nType "add" to add your to do items.\nType "delete" to delete your to do items. \nType "rename" + id + "new name" to change name of the item.\nType "show list" or "list" to show your all to do.`
   );
 } else {
   console.log(
