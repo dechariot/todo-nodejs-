@@ -8,9 +8,9 @@ A project built command line interface to-do app using NodeJS.
 
 Here's a walkthrough of implemented user stories.
 
-```
+
 <img src='https://media.giphy.com/media/RhqSVganEnCWcFxFX1/giphy.gif' />
-```
+
 
 ## User Stories
 
