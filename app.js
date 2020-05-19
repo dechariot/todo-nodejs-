@@ -68,12 +68,18 @@ const removeToDo = () => {
 
   currentData.splice(indexDelete.id - 1, 1);
 
-  // Update ID for todo items
-  for (i = 0; i < currentData.length; i++) {
-    currentData[i].id === i++;
+  let newId = 1;
+
+  //   Update ID for todo items
+  for (let i = 0; i < currentData.length; i++) {
+    currentData[i].id = newId++;
+
     //Update
     fs.writeFileSync(`data.json`, JSON.stringify(currentData));
   }
+  console.log(
+    `Your to do list updated! \nYou can type "list" or "show list" to see your to-do list.`
+  );
 };
 
 //Read and setup for commands
@@ -99,24 +105,3 @@ if (process.argv[2] === "add") {
     `Command not found. Try again! \n================= \nPlease try some available commands here: \nType "add" to add your to do items.\nType "delete" to delete your to do items.\nType "show list" or "list" to show your all to do.`
   );
 }
-
-//   //Read CurrentData in file data.json
-//   const currentData = loadData();
-
-//   //Remove Item follow as ID of to-do item
-//   let indexDelete = currentData.find(({ id }) => id == process.argv[3]);
-
-//   currentData.splice(indexDelete.id - 1, 1);
-
-//   let newId = 1;
-
-//   //   Update ID for todo items
-//   for (let i = 0; i < currentData.length; i++) {
-//     currentData[i].id = newId++;
-
-//     //Update
-//     fs.writeFileSync(`data.json`, JSON.stringify(currentData));
-//   }
-//   console.log(
-//     `Your to do list updated! \nYou can type "list" or "show list" to see your to-do list.`
-//   );
