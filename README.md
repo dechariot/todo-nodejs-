@@ -8,24 +8,22 @@ A project built command line interface to-do app using NodeJS.
 
 Here's a walkthrough of implemented user stories.
 
-To create a GIF, use [LiceCap](http://www.cockos.com/licecap/), [RecordIt](http://www.recordit.co), or [Loom](http://www.useloom.com), and link the image here in the markdown.
-
 ```
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://media.giphy.com/media/RhqSVganEnCWcFxFX1/giphy.gif' />
 ```
 
 ## User Stories
 
 The following **required** functionalities are completed (this is a sample):
 
-* [ ] User can create a todo with content
-* [ ] When a todo is created, it has a "status" field, which is by default `incomplete`
-* [ ] User can list all todos, displaying their status and content, by issuing a `list`	command
+* [x] User can create a todo with content
+* [x] When a todo is created, it has a "status" field, which is by default `incomplete`
+* [x] User can list all todos, displaying their status and content, by issuing a `list`	command
 * [ ] User can list all todos that are complete or incomplete, by issuing a `list complete` or `list incomplete` command
-* [ ] User can delete a specific todo by issuing a `delete <id>` command
-* [ ] User can toggle the status of a todo done by using a `toggle <id>` command
+* [x] User can delete a specific todo by issuing a `delete <id>` command
+* [x] User can toggle the status of a todo done by using a `toggle <id>` command
 * [ ] User can delete all todos by issuing a `delete_all` command
-* [ ] Text messages should be printed in custom style for readability (different color or styles)
+* [x] Text messages should be printed in custom style for readability (different color or styles)
 
 The following **optional** features are implemented:
 
