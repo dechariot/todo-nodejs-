@@ -5,6 +5,9 @@
 //3. Store those database somewhere
 //4. Funcs to read/write/... the data
 
+//Chalk to customize the color
+const chalk = require("chalk");
+
 //fs = nodeJS file system module allows you work with the file system on your computer
 /*Common use for the File System module:
  * Read files
@@ -131,9 +134,9 @@ if (process.argv[2] === "add") {
 } else if (process.argv[2] === "show list" || process.argv[2] === "list") {
   const allItems = loadData();
   //Show the data using for of Loop
-  console.log("Your to-do list:");
+  console.log(chalk.yellow("Your to-do list:"));
   for (const { id, content, status } of allItems) {
-    console.log(id, content, status);
+    console.log(chalk.white(id), chalk.blue(content), chalk.green(status));
   }
 } else if (process.argv[2] === "rename") {
   renameToDo();
